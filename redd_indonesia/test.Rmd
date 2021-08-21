@@ -20,8 +20,6 @@ library(scales)
 
 
 ```{r}
-
-setwd("C:\\Users\\joshu\\Documents\\git\\shiny_redd\\redd_indonesia") #set your own directory
 mydata<- read_xlsx("data\\dummy.xlsx") #assign the data to "mydata"
 
 View(mydata) #view the data, notice the column of "latitude","longitude", "woe_label"
@@ -137,9 +135,9 @@ g <- ggplot(df, aes(x = as.double(period), y = Values)) +
   theme(axis.title.x = element_text(vjust=1), axis.title.y.left = element_text(vjust=+10)) +
   scale_x_continuous(breaks= pretty_breaks())
 
-g <- g + geom_point(data=firedata1, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires pre-REDD+"), size=2, shape=23) + 
+g <- g + geom_point(data=firedata1, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires during REDD+"), size=2, shape=23) + 
   scale_shape_identity() + geom_smooth(data = firedata1, aes(x=as.double(period), y=wildfire_emissions), method = lm, span = 0.5, level=0.95) + 
-  geom_point(data=firedata2, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires during REDD+"), size=2, shape=23) + 
+  geom_point(data=firedata2, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires pre-REDD+"), size=2, shape=23) + 
   geom_smooth(data = firedata2, aes(x=as.double(period), y=wildfire_emissions), method = lm, span = 0.5, level=0.95)
 
 g
@@ -197,9 +195,9 @@ g <- ggplot(df, aes(x = as.double(period), y = Values)) +
   scale_x_continuous(breaks= pretty_breaks())
 
 
-g <- g + geom_point(data=firedata1, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires pre-REDD+"), size=2, shape=23) + 
+g <- g + geom_point(data=firedata1, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires during REDD+"), size=2, shape=23) + 
   scale_shape_identity() + geom_smooth(data = firedata1, aes(x=as.double(period), y=wildfire_emissions), method = lm, span = 0.5, level=0.95) + 
-  geom_point(data=firedata2, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires during REDD+"), size=2, shape=23) + 
+  geom_point(data=firedata2, aes(x=as.double(period), y=wildfire_emissions, fill = "Fires pre-REDD+"), size=2, shape=23) + 
   geom_smooth(data = firedata2, aes(x=as.double(period), y=wildfire_emissions), method = lm, span = 0.5, level=0.95)
 
 g
