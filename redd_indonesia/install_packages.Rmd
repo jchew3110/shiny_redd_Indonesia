@@ -1,0 +1,23 @@
+---
+title: "packages_install"
+author: "josh"
+date: "13/08/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+install.packages('dplyr')
+install.packages('shiny')
+install.packages('maps')
+install.packages('mapdata')
+install.packages('ggplot2')
+install.packages('readxl')
+install.packages('ggthemes')
+install.packages('ggrepel')
+install.packages('ggthemes')
+install.packages('tidyverse')
+install.packages('scales')
+install.packages('tidyr')
+install.packages('rsconnect')
+```
+

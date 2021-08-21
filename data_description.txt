@@ -1,0 +1,54 @@
+Indonesia_frel
+
+Summary: 
+Indonesia's REDD+ Forest Reference Emission Level statistics from 2012 - 2016. 
+This data uses records CO2 equivalent emissions in metric tonnes.
+For Indonesia FREL is calculated by totalling reference levels for Deforestation, Forest Degradation and Peat Decomposition.
+For more information on FREL ~ https://redd.unfccc.int/fact-sheets/forest-reference-emission-levels.html
+Data sourced 2013-2016 on page A-35 of Biennial update report (BUR) (Appendix) ~ https://unfccc.int/documents/192165
+Conservative historical data of 1990-2012 and 2019/2020 projections found page 44 ~ https://redd.unfccc.int/files/frel_submission_by__indonesia_final.pdf
+
+Variables: 
+period - year
+deforestation_reference - Forest reference level for deforestation (learn more on page 1-8 of BUR)
+deforestation_actual - Tonnes of carbon equivalent emissions from deforestation 
+forestdegradation_reference - Forest reference level for forest degradation (learn more on page 1-8 of BUR)
+forestdegradation_actual - Tonnes of carbon equivalent emissions from forest degradation 
+peatdecomposition_reference - Forest reference level for peat decomposition 
+peatdecomposition_actual - Tonnes of carbon equivalent emissions from peat decomposition 
+frel_reference - Forest Reference Emission Level 
+total_annual_emissions - Tonnes  of carbon equivalent emissions total
+
+
+Indonesia_er
+
+Summary: 
+Indonesia's REDD+ Emission reduction statistics from 2012 - 2016.
+This data uses records CO2 equivalent emissions in metric tonnes.
+For Indonesia emission reductions are calculated by subtracting the actual (estimated) emissions from the reference level. 
+This is repeated for Deforestation, Forest Degradation and Peat Decomposition then totalled to complie REDD+ results. 
+E.g. If the REDD+ result is positive there has been an improvement in emissions reductions and vis-vera
+Data was created from FREL found on page A-35 (Appendix) ~ https://unfccc.int/documents/192165
+
+Variables:
+period - year
+deforestation - Tonnes of carbon equivalent emissions due to deforestation above/below REDD+ FREL target
+forestdegradation - Tonnes of carbon equivalent emissions due to forestdegradation above/below REDD+ FREL target
+peatdecomposition - Tonnes of carbon equivalent emissions due to peatdecomposition above/below REDD+ FREL target
+reddplusresults - calculated using (reference emissions-actual emissions)
+
+
+
+
+Indonesia_fire 
+
+Summary:
+Indonesia's yearly total wildfire carbon emissions in megatonnes (Mt/yr). 
+The data was complied from daily total wildfire carbon emissions requested from the Copernicus Atmosphere Monitoring Service's (CAMS) 
+Global Fire Assimilation System (GFAS).
+The data set can be accessed through request of Indonesia daily total wildfire carbon emissions. CAMS GFASv1.2 data
+
+Variables:
+period - the year
+wildfire_emissions - yearly emissions due to wildfires
+
