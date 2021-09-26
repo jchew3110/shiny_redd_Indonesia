@@ -1,11 +1,11 @@
 Indonesia_frel
 
 Summary: 
-Indonesia's REDD+ Forest Reference Emission Level statistics from 2012 - 2016. 
+Indonesia's REDD+ Forest Reference Emission Level statistics from 2012 - 2017.
 This data uses records CO2 equivalent emissions in metric tonnes.
 For Indonesia FREL is calculated by totalling reference levels for Deforestation, Forest Degradation and Peat Decomposition.
 For more information on FREL ~ https://redd.unfccc.int/fact-sheets/forest-reference-emission-levels.html
-Data sourced 2013-2016 on page A-35 of Biennial update report (BUR) (Appendix) ~ https://unfccc.int/documents/192165
+Data sourced 2013-2017 on page A-35 of Biennial update report (BUR) (Appendix) ~ https://unfccc.int/documents/192165
 Conservative historical data of 1990-2012 and 2019/2020 projections found page 44 ~ https://redd.unfccc.int/files/frel_submission_by__indonesia_final.pdf
 
 Variables: 
@@ -23,7 +23,7 @@ total_annual_emissions - Tonnes  of carbon equivalent emissions total
 Indonesia_er
 
 Summary: 
-Indonesia's REDD+ Emission reduction statistics from 2012 - 2016.
+Indonesia's REDD+ Emission reduction statistics from 2012 - 2017.
 This data uses records CO2 equivalent emissions in metric tonnes.
 For Indonesia emission reductions are calculated by subtracting the actual (estimated) emissions from the reference level. 
 This is repeated for Deforestation, Forest Degradation and Peat Decomposition then totalled to complie REDD+ results. 

@@ -1,0 +1,83 @@
+---
+title: "Untitled"
+author: "josh"
+date: "26/09/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(dplyr)
+require(maps)  #loading maps package
+require(mapdata) #loading mapdata package
+library(ggplot2) #ggplot2 package
+library(readxl) #package for read .xlsx file
+library(ggthemes) #package for ggplot2 theme
+library(ggrepel) #extendig the plotting package ggplot2 for maps
+library(ggthemes)
+library(tidyverse)
+library(scales)
+library(tidyr)
+library(rsconnect)
+library(repr)
+
+mydata <- read_xlsx("dummy.xlsx") #assign the data to "mydata"
+global <- map_data("world") #World longitude and latitude data 
+firedata <- read_xlsx("Indonesia_fire.xlsx") 
+firedata <- transform(firedata, period = as.Date(as.character(period), "%Y"))
+firedata$period <- format(firedata$period, format="%Y")
+firedata$wildfire_emissions_co2e <- firedata$wildfire_emissions * 1000000
+freldata <- read_xlsx("Indonesia_frel.xlsx") 
+freldata$period <- format(freldata$period, format="%Y")
+reductdata <- read_xlsx("Indonesia_er.xlsx") 
+reductdata$period <- format(reductdata$period, format="%Y")
+
+all_data <- firedata %>% 
+    full_join(freldata) %>% 
+    full_join(reductdata) %>%
+    arrange(period)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+ df <- all_data %>%
+            select(period, wildfire_emissions_co2e, frel_reference, deforestation_actual,
+                   forestdegradation_actual, peatdecomposition_actual, total_annual_emissions) %>%
+            gather(key = "Variables", value = "Values", -period)
+        
+        df$Variables[df$Variables == "wildfire_emissions_co2e"] <- "Wildfires"
+        df$Variables[df$Variables == "frel_reference"] <- "Forest Reference Emission Levels (FREL)"
+        df$Variables[df$Variables == "deforestation_actual"] <- "Deforestation"
+        df$Variables[df$Variables == "forestdegradation_actual"] <- "Forest degradation"
+        df$Variables[df$Variables == "peatdecomposition_actual"] <- "Forest peat decomposition"
+        df$Variables[df$Variables == "total_annual_emissions"] <- "Total emissions (excluding wildfires)"
+        df$Values <- df$Values/1000000
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r }
+g <- ggplot(df, aes(x = as.double(period), y = Values)) + 
+            geom_line(size=1, aes(color = Variables)) + 
+            scale_color_manual(values = c("red", "steelblue", "darkgreen", "goldenrod1", "coral1", "purple3")) +
+            labs(title = "Total Forest Carbon Emissions for Indonesia",
+                 subtitle = "(1990-2020)",
+                 caption = "Data from CAMS GFAS and FREL submissions (check data description for more details)",
+                 tag = "Figure 4",
+                 x = "Period", y = "Carbon Emissions Equivalent (Megatonnes)") +
+            geom_point(size=2, aes(color=Variables)) +
+            theme_minimal() +
+            theme(legend.position="top") +
+            theme(axis.title.x = element_text(vjust=1), axis.title.y.left = element_text(vjust=+10)) +
+            scale_x_continuous(breaks= pretty_breaks()) + guides(colour = guide_legend(override.aes = list(size=4))) 
+        g
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
